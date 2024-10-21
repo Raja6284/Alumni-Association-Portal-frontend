@@ -1,1 +1,1 @@
-export const BACKEND_URL = "http://localhost:8000"
+export const BACKEND_URI = "https://alumni-association-portal-backend.onrender.com"

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { BACKEND_URI } from "../../../config";
 
 const Event = () => {
   const [events, setEvents] = useState([]);
@@ -11,7 +12,7 @@ const Event = () => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/v1/user/event/showAllEvents"
+          `${BACKEND_URI}/api/v1/user/event/showAllEvents`
         );
         setEvents(response.data.data); // Adjust according to your backend response structure
         console.log(response.data.data);

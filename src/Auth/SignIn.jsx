@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { BACKEND_URI } from "../../config";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ function SignIn() {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/users/login",
+        `${BACKEND_URI}/api/v1/users/login`,
         {
           email,
           password,

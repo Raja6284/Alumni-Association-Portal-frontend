@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { BACKEND_URI } from "../../../config";
 
 const Home = () => {
   const [stories, setStories] = useState([]);
@@ -10,13 +11,13 @@ const Home = () => {
       try {
         // Fetch all stories from the backend
         const storyResponse = await axios.get(
-          "http://localhost:8000/api/v1/user/story/showAllStory"
+          `${BACKEND_URI}/api/v1/user/story/showAllStory`
         );
         setStories(storyResponse.data.data || []);
 
         // Fetch all events from the backend
         const eventResponse = await axios.get(
-          "http://localhost:8000/api/v1/user/event/showAllEvents"
+          `${BACKEND_URI}/api/v1/user/event/showAllEvents`
         );
         setEvents(eventResponse.data.data || []);
       } catch (error) {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URI } from "../../../config";
 
 const ProfilePage = () => {
   const [profileData, setProfileData] = useState(null);
@@ -10,7 +11,7 @@ const ProfilePage = () => {
     const fetchProfileData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/v1/users/viewProfile",
+          `${BACKEND_URI}/api/v1/users/viewProfile`,
           {
             headers: {
               Authorization: `${token}`, // Add token to headers

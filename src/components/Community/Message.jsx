@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./Message.css"; // Importing the CSS styles (you can define this in your styles folder)
+import { BACKEND_URI } from "../../../config";
 
 // Message Component
 const Message = () => {
@@ -11,13 +12,14 @@ const Message = () => {
   const [recipient, setRecipient] = useState(null);
   const token = localStorage.getItem("token");
   const currentUserId = localStorage.getItem("userId"); // Assuming current user's ID is stored in localStorage
+  
 
   // Fetch messages between the current user and the recipient
   useEffect(() => {
     const fetchMessages = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/v1/conversations/${id}`, // Fetch conversation
+          `${BACKEND_URI}/api/v1/conversations/${id}`, // Fetch conversation
           {
             headers: {
               Authorization: `${token}`,
@@ -39,7 +41,7 @@ const Message = () => {
     if (messageInput.trim() === "") return; // Avoid sending empty messages
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/v1/messages`, // Send message API
+        `${BACKEND_URI}/api/v1/messages`, // Send message API
         {
           recipientId: id,
           content: messageInput,

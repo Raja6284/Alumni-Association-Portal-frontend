@@ -3,6 +3,7 @@ import axios from "axios";
 import { useJobs } from "../../contexts/JobContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { BACKEND_URI } from "../../../config";
 
 let token;
 function JobPost() {
@@ -44,7 +45,7 @@ function JobPost() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/user/job/createJob",
+        `${BACKEND_URI}/api/v1/user/job/createJob`,
         jobDetails,
         {
           headers: {

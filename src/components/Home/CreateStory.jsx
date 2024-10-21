@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useStories } from "../../contexts/StoryContext";
+import { BACKEND_URI } from "../../../config";
 
 const CreateStory = () => {
   const [title, setTitle] = useState("");
@@ -36,7 +37,7 @@ const CreateStory = () => {
     try {
       // Send data to backend API with authentication token if required
       const response = await axios.post(
-        "http://localhost:8000/api/v1/user/story/createStory",
+        `${BACKEND_URI}/api/v1/user/story/createStory`,
         newStory,
         {
           headers: {

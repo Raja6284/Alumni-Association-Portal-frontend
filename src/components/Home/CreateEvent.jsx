@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URI } from "../../../config";
 
 const CreateEvent = () => {
   const [formData, setFormData] = useState({
@@ -51,7 +52,7 @@ const CreateEvent = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/user/event/createEvent",
+        `${BACKEND_URI}/api/v1/user/event/createEvent`,
         formData,
         {
           headers: {

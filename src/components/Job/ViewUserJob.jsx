@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URI } from "../../../config";
 
 function ViewUserJob() {
   const [jobs, setJobs] = useState([]);
@@ -28,7 +29,7 @@ function ViewUserJob() {
 
         // Make the GET request with the Authorization header
         const response = await axios.get(
-          "http://localhost:8000/api/v1/user/job/userJob",
+          `${BACKEND_URI}/api/v1/user/job/userJob`,
           {
             headers: {
               Authorization: `${token}`, // Include the token in the Authorization header

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BACKEND_URI } from "../../../config";
 
 const Profile = () => {
   const { id } = useParams(); // Get the user ID from the URL
@@ -12,7 +13,7 @@ const Profile = () => {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/v1/users/${id}`, // Fetch user by ID
+          `${BACKEND_URI}/api/v1/users/${id}`, // Fetch user by ID
           {
             headers: {
               Authorization: `${token}`,

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { BACKEND_URI } from "../../../config";
 
 const UpdateProfilePage = () => {
   const [formData, setFormData] = useState({
@@ -107,7 +108,7 @@ const UpdateProfilePage = () => {
 
     try {
       await axios.post(
-        "http://localhost:8000/api/v1/users/update",
+        `${BACKEND_URI}/api/v1/users/update`,
         formDataToSend
       );
       alert("Profile updated successfully!");

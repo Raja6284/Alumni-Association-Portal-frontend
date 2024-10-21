@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { BACKEND_URI } from "../../../config";
 
 const StoryDetailPage = () => {
   const { id } = useParams(); // Extract the story ID from the URL
@@ -12,7 +13,7 @@ const StoryDetailPage = () => {
     const fetchStory = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/v1/user/story/${id}`
+          `${BACKEND_URI}/api/v1/user/story/${id}`
         );
         if (response.data.data) {
           setStory(response.data.data);

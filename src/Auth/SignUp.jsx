@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios"; // Import axios
+import { BACKEND_URI } from "../../config";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const SignUp = () => {
     try {
       // Make POST request to the backend API
       const response = await axios.post(
-        "http://localhost:8000/api/v1/users/signup",
+        `${BACKEND_URI}/api/v1/users/signup`,
         formData,
         {
           headers: {

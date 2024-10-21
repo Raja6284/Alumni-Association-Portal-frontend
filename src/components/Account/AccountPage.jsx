@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URI } from "../../../config";
 
 const AccountPage = () => {
   const [user, setUser] = useState(null);
@@ -21,7 +22,7 @@ const AccountPage = () => {
   useEffect(() => {
     // Fetch user data from backend
     axios
-      .get("http://localhost:8000/api/v1/user/")
+      .get(`${BACKEND_URI}/api/v1/user/`)
       .then((response) => setUser(response.data))
       .catch((error) => console.error("Error fetching user data:", error));
   }, []);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { BACKEND_URI } from "../../../config";
 
 const StoryPage = () => {
   const [stories, setStories] = useState([]);
@@ -12,7 +13,7 @@ const StoryPage = () => {
     const fetchStories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/v1/user/story/showAllStory"
+          `${BACKEND_URI}/api/v1/user/story/showAllStory`
         );
 
         if (response.data.data.length === 0) {

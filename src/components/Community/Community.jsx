@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URI } from "../../../config";
 
 const Community = () => {
   const [users, setUsers] = useState([]);
@@ -11,7 +12,7 @@ const Community = () => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/v1/users/community",
+          `${BACKEND_URI}/api/v1/users/community`,
           {
             headers: {
               Authorization: `${token}`, // Correctly format the token
